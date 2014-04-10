@@ -5,7 +5,7 @@
         "VPCCIDRBlock": {
             "Description": "Enter CIDR block for VPC",
             "Type": "String",
-            "Default": "10.0.0.0/16",
+            "Default": "172.31.0.0/16",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "VPCAZs": {
@@ -16,25 +16,25 @@
         "PubSubnet1CIDRBlock": {
             "Description": "Enter CIDR block for the Public Subnet 1 in VPC",
             "Type": "String",
-            "Default": "10.0.1.0/24",
+            "Default": "172.31.1.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "PubSubnet2CIDRBlock": {
             "Description": "Enter CIDR block for the Public Subnet 2 in VPC",
             "Type": "String",
-            "Default": "10.0.3.0/24",
+            "Default": "172.31.3.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "PriSubnet1CIDRBlock": {
             "Description": "Enter CIDR block for the Private Subnet 1 in VPC",
             "Type": "String",
-            "Default": "10.0.2.0/24",
+            "Default": "172.31.2.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "PriSubnet2CIDRBlock": {
             "Description": "Enter CIDR block for the Private Subnet 2 in VPC",
             "Type": "String",
-            "Default": "10.0.4.0/24",
+            "Default": "172.31.4.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "NATInstanceType": {
@@ -47,7 +47,7 @@
             ]
         },
         "Keyname": {
-            "Description": "Name of an existing EC2 KeyPair",
+            "Description": "Name of existing EC2 KeyPair",
             "Type": "String",
             "Default": "Git-Server"
         }
