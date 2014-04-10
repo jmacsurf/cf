@@ -48,7 +48,8 @@
         },
         "Keyname": {
             "Description": "Name of an existing EC2 KeyPair",
-            "Type": "String"
+            "Type": "String",
+            "Default": "String"
         }
     },
     "Mappings": {
