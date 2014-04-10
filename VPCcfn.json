@@ -49,7 +49,7 @@
         "Keyname": {
             "Description": "Name of an existing EC2 KeyPair",
             "Type": "String",
-            "Default": "String"
+            "Default": "Git-Server"
         }
     },
     "Mappings": {
