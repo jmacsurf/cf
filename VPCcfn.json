@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "CloudFormation: 1 VPC across 2 AZ's each with 2 Public and 2 Private subnets",
+    "Description": "CloudFormation: 1 VPC across 2 AZ's each with 2 Public and 2 Private subnets plus a NAT instance" ,
     "Parameters": {
         "VPCCIDRBlock": {
             "Description": "Enter CIDR block for VPC",
@@ -11,7 +11,7 @@
         "VPCAZs": {
             "Description": "Comma-delimted list of AZs for the VPC",
             "Type": "CommaDelimitedList",
-            "Default": "a,b"
+            "Default": "b,c"
         },
         "PubSubnet1CIDRBlock": {
             "Description": "Enter CIDR block for the Public Subnet 1 in VPC",
@@ -49,7 +49,7 @@
         "Keyname": {
             "Description": "Name of existing EC2 KeyPair",
             "Type": "String",
-            "Default": "Git-Server"
+            "Default": "JKEY"
         }
     },
     "Mappings": {
@@ -90,7 +90,7 @@
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "Week3: CloudFormation VPC"
+                        "Value": "HBP DEV VPC"
                     }
                 ]
             }
