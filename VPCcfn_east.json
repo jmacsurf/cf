@@ -449,7 +449,7 @@
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "RouteTable attached to AZ2 Private Subnet"
+                        "Value": "RouteTable attached to AZ1 Private Subnet"
                     }
                 ]
             }
