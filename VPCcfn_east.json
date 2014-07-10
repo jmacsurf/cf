@@ -1,11 +1,11 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "CloudFormation: 1 VPC across 2 AZ's each with 2 Public and 2 Private subnets plus a NAT instance" ,
+    "Description": "CloudFormation: 1 VPC across 2 AZ's each with 2 Public and 2 Private subnets plus a NAT instance in each AZ" ,
     "Parameters": {
         "VPCCIDRBlock": {
             "Description": "Enter CIDR block for VPC",
             "Type": "String",
-            "Default": "172.31.0.0/16",
+            "Default": "10.0.0.0/16",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "VPCAZs": {
@@ -16,25 +16,25 @@
         "PubSubnet1CIDRBlock": {
             "Description": "Enter CIDR block for the Public Subnet 1 in VPC",
             "Type": "String",
-            "Default": "172.31.1.0/24",
+            "Default": "10.0.1.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "PubSubnet2CIDRBlock": {
             "Description": "Enter CIDR block for the Public Subnet 2 in VPC",
             "Type": "String",
-            "Default": "172.31.3.0/24",
+            "Default": "10.0.3.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "PriSubnet1CIDRBlock": {
             "Description": "Enter CIDR block for the Private Subnet 1 in VPC",
             "Type": "String",
-            "Default": "172.31.2.0/24",
+            "Default": "10.0.2.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "PriSubnet2CIDRBlock": {
             "Description": "Enter CIDR block for the Private Subnet 2 in VPC",
             "Type": "String",
-            "Default": "172.31.4.0/24",
+            "Default": "10.0.4.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "NATInstanceType": {
@@ -90,7 +90,7 @@
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "HBP DEV VPC"
+                        "Value": "Jenkins Tutorial us-east-1 VPC"
                     }
                 ]
             }
@@ -440,7 +440,7 @@
                 ]
             }
         },
-        "PrivateRouteTable": {
+        "PrivateRouteTable1": {
             "Type": "AWS::EC2::RouteTable",
             "Properties": {
                 "VpcId": {
@@ -449,7 +449,21 @@
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "RouteTable attached to Private Subnets"
+                        "Value": "RouteTable attached to AZ2 Private Subnet"
+                    }
+                ]
+            }
+        },
+        "PrivateRouteTable2": {
+            "Type": "AWS::EC2::RouteTable",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC1"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "RouteTable attached to AZ2 Private Subnet"
                     }
                 ]
             }
@@ -466,15 +480,27 @@
                 }
             }
         },
-        "PrivateRoutes": {
+        "PrivateRoutes1": {
             "Type": "AWS::EC2::Route",
             "Properties": {
                 "DestinationCidrBlock": "0.0.0.0/0",
                 "InstanceId": {
-                    "Ref": "NATInstance1"
+                    "Ref": "NATInstance1" 
                 },
                 "RouteTableId": {
-                    "Ref": "PrivateRouteTable"
+                    "Ref": "PrivateRouteTable1"
+                }
+            }
+        },
+        "PrivateRoutes2": {
+            "Type": "AWS::EC2::Route",
+            "Properties": {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "InstanceId": {
+                    "Ref": "NATInstance2"
+                },
+                "RouteTableId": {
+                    "Ref": "PrivateRouteTable2"
                 }
             }
         },
@@ -504,10 +530,10 @@
         },
         "AttachPrivateRoutes1": {
             "Type": "AWS::EC2::SubnetRouteTableAssociation",
-            "DependsOn": "PrivateRouteTable",
+            "DependsOn": "PrivateRouteTable1",
             "Properties": {
                 "RouteTableId": {
-                    "Ref": "PrivateRouteTable"
+                    "Ref": "PrivateRouteTable1"
                 },
                 "SubnetId": {
                     "Ref": "PriSubnet1"
@@ -516,10 +542,10 @@
         },
         "AttachPrivateRoutes2": {
             "Type": "AWS::EC2::SubnetRouteTableAssociation",
-            "DependsOn": "PrivateRouteTable",
+            "DependsOn": "PrivateRouteTable2",
             "Properties": {
                 "RouteTableId": {
-                    "Ref": "PrivateRouteTable"
+                    "Ref": "PrivateRouteTable2"
                 },
                 "SubnetId": {
                     "Ref": "PriSubnet2"
