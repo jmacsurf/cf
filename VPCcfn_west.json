@@ -90,7 +90,7 @@
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "HBP DEV VPC"
+                        "Value": "Jenkins Tutorial VPC"
                     }
                 ]
             }
@@ -363,69 +363,6 @@
                 "Domain": "vpc"
             }
         },
-        "NATInstance2": {
-            "Type": "AWS::EC2::Instance",
-            "Properties": {
-                "AvailabilityZone": {
-                    "Fn::Join": [
-                        "",
-                        [
-                            {
-                                "Ref": "AWS::Region"
-                            },
-                            {
-                                "Fn::Select": [
-                                    1,
-                                    {
-                                        "Ref": "VPCAZs"
-                                    }
-                                ]
-                            }
-                        ]
-                    ]
-                },
-                "ImageId": {
-                    "Fn::FindInMap": [
-                        "RegionMap",
-                        {
-                            "Ref": "AWS::Region"
-                        },
-                        "64"
-                    ]
-                },
-                "InstanceType": {
-                    "Ref": "NATInstanceType"
-                },
-                "KeyName": {
-                    "Ref": "Keyname"
-                },
-                "SecurityGroupIds": [
-                    {
-                        "Ref": "NATSecGrp"
-                    }
-                ],
-                "SourceDestCheck": "false",
-                "SubnetId": {
-                    "Ref": "PubSubnet2"
-                },
-                "Tags": [
-                    {
-                        "Key": "Name",
-                        "Value": "NAT Host"
-                    }
-                ]
-            }
-        },
-        "EIPforNATinstance": {
-            "Type": "AWS::EC2::EIP",
-            "DependsOn": "NATInstance2",
-            "Properties": {
-                "InstanceId": {
-                    "Ref": "NATInstance2"
-                },
-                "Domain": "vpc"
-            }
-        },
         "PublicRouteTable": {
             "Type": "AWS::EC2::RouteTable",
             "Properties": {
@@ -454,7 +391,7 @@
                 ]
             }
         },
-        "PublicRoute": {
+        "PublicRoutes": {
             "Type": "AWS::EC2::Route",
             "Properties": {
                 "DestinationCidrBlock": "0.0.0.0/0",
