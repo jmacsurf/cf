@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "CloudFormation: 1 VPC across 2 AZ's each with 2 Public and 2 Private subnets plus a NAT instance in each AZ" ,
+    "Description": "CloudFormation: 1 VPC across 2 AZ's each with 2 Public and 2 Private subnets plus a NAT instance in each AZ",
     "Parameters": {
         "VPCCIDRBlock": {
             "Description": "Enter CIDR block for VPC",
