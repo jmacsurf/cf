@@ -46,7 +46,8 @@
                 "m1.small"
             ]
         }
-    },
+       }, 
+  
     "Mappings": {
         "RegionMap": {
             "us-east-1": {
@@ -85,7 +86,7 @@
                 "Tags": [
                     {
                         "Key": "Name",
-                        "Value": "Jenkins Tutorial us-west-2 VPC"
+                        "Value": "Jenkins Tutorial us-east-1 VPC"
                     }
                 ]
             }
