@@ -11,7 +11,7 @@
         "VPCAZs": {
             "Description": "Comma-delimted list of AZs for the VPC",
             "Type": "CommaDelimitedList",
-            "Default": "b,c"
+            "Default": "a,b"
         },
         "PubSubnet1CIDRBlock": {
             "Description": "Enter CIDR block for the Public Subnet 1 in VPC",
@@ -329,9 +329,7 @@
                 "InstanceType": {
                     "Ref": "NATInstanceType"
                 },
-                "KeyName": {
-                    "Ref": "Keyname"
-                },
+           
                 "SecurityGroupIds": [
                     {
                         "Ref": "NATSecGrp"
@@ -392,9 +390,7 @@
                 "InstanceType": {
                     "Ref": "NATInstanceType"
                 },
-                "KeyName": {
-                    "Ref": "Keyname"
-                },
+            
                 "SecurityGroupIds": [
                     {
                         "Ref": "NATSecGrp"
