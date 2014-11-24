@@ -5,7 +5,7 @@
         "VPCCIDRBlock": {
             "Description": "Enter CIDR block for VPC",
             "Type": "String",
-            "Default": "10.0.0.0/16",
+            "Default": "192.168.0.0/16",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "VPCAZs": {
@@ -16,25 +16,25 @@
         "PubSubnet1CIDRBlock": {
             "Description": "Enter CIDR block for the Public Subnet 1 in VPC",
             "Type": "String",
-            "Default": "10.0.1.0/24",
+            "Default": "192.168.1.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "PubSubnet2CIDRBlock": {
             "Description": "Enter CIDR block for the Public Subnet 2 in VPC",
             "Type": "String",
-            "Default": "10.0.3.0/24",
+            "Default": "192.168.3.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "PriSubnet1CIDRBlock": {
             "Description": "Enter CIDR block for the Private Subnet 1 in VPC",
             "Type": "String",
-            "Default": "10.0.2.0/24",
+            "Default": "192.168.2.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "PriSubnet2CIDRBlock": {
             "Description": "Enter CIDR block for the Private Subnet 2 in VPC",
             "Type": "String",
-            "Default": "10.0.4.0/24",
+            "Default": "192.168.4.0/24",
             "AllowedPattern": "^([0-9]+\\.){3}[0-9]+\\/[0-9]+$"
         },
         "NATInstanceType": {
